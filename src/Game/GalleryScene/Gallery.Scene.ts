@@ -1,5 +1,5 @@
 import { System, Sprite, TweenSystem, BlueprintBuilder } from "webgladiator";
-import { interval } from 'rxjs';
+import { interval, timer } from 'rxjs';
 import { takeUntil, takeWhile } from 'rxjs/operators';
 import { Scene, Entity, Text } from "webgladiator";
 import { GameObjectBuilder } from "webgladiator";
@@ -44,7 +44,7 @@ export class GalleryScene extends Scene {
 
         }
 
-        interval(GALLERY_CONFIG.INTERVAL).pipe(takeWhile(() => this.isAlive)).subscribe(value => {
+        timer(0, GALLERY_CONFIG.INTERVAL).pipe(takeWhile(() => this.isAlive)).subscribe(value => {
             if (this.getNode("slide")) {
                 this.removeNode("slide")
             }
