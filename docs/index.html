@@ -5,7 +5,13 @@
   <meta charset="UTF-8" />
   <title>Show Case!</title>
   <style>
-    * {
+    ul {
+      position: fixed;
+      margin: 0;
+      padding: 0;
+    }
+
+    *:not(.html) {
       padding: 0;
       margin: 0;
       border: 0;
@@ -13,11 +19,11 @@
       height: 100%;
     }
 
-    button {
+    button:not(.html) {
       background: rgba(40, 185, 230, 0.671) !important;
     }
 
-    button::after {
+    button:not(.html)::after {
       content: attr(title);
       /*take the content from the title*/
       color: white;
@@ -29,6 +35,13 @@
 </head>
 
 <body>
+  <ul class="html" id="menu">
+    <li><button class="html" id="STACKSCENE">Stacks</button>
+    </li>
+    <li> <button class="html" id="GALLERYSCENE">Gallery</button>
+    </li>
+    <li> <button class="html" id="PARTICLESSCENE">Particles</button></li>
+  </ul>
   <script src="bundle.js"></script>
 </body>
 
