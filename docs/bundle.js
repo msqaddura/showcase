@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "f66e7e30b0ba1289eb8d";
+/******/ 	var hotCurrentHash = "8f7b0cbdea785c0dcb72";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -21970,7 +21970,7 @@ function extend() {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GAMESTATES = {
-    DEFAULT: "PARTICLESSCENE",
+    DEFAULT: "STACKSCENE",
     STACKSCENE: "STACKSCENE",
     GALLERYSCENE: "GALLERYSCENE",
     PARTICLESSCENE: "PARTICLESSCENE"
