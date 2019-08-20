@@ -15,7 +15,7 @@ export class GameStateStrategy extends Strategy {
       complete: () => {
         console.info("** Loading Finished! **");
         this.owner.create();
-        sceneManager.loadScene(GAMESTATES.STACKSCENE);
+        sceneManager.loadScene(GAMESTATES.DEFAULT);
       }
     });
   }

@@ -3,6 +3,7 @@ import { GameLayout } from "./Game.Layout";
 import { GameStateStrategy } from "./GameState.Strategy";
 import { GAMESTATES } from "./GAME.STATES"
 import { StackSceneBlueprint } from "./StackScene/StackScene.Blueprint";
+import { GallerySceneBlueprint } from "./GalleryScene/Gallery.Blueprint";
 // tslint:disable-next-line:variable-name
 export const GameBlueprint = {
   name: "Game",
@@ -17,6 +18,7 @@ export const GameBlueprint = {
 
   ],
   sceneMap: {
-    [GAMESTATES.STACKSCENE]: StackSceneBlueprint
+    [GAMESTATES.STACKSCENE]: StackSceneBlueprint,
+    [GAMESTATES.GALLERYSCENE]: GallerySceneBlueprint
   }
 };

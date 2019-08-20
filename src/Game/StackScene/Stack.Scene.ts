@@ -5,13 +5,14 @@ import { Game } from "../Game";
 import { STACK_CONFIG } from "./Stack.Config"
 export class StackScene extends Scene {
     owner: Game;
-    tiles: Sprite[] = [];
+
     start() {
+        const tiles: Sprite[] = [];
         for (let i = 0; i < STACK_CONFIG.TOTAL; i++) {
-            this.tiles.push(this.getNode(`item_${i}`));
+            tiles.push(this.getNode(`item_${i}`));
         }
         let zOrder = -STACK_CONFIG.TOTAL;
-        TweenSystem.getInstance().create({ paused: true }).staggerTo(this.tiles.reverse(), STACK_CONFIG.ANIMATION_TIME,
+        TweenSystem.getInstance().create({ paused: true }).staggerTo(tiles.reverse(), STACK_CONFIG.ANIMATION_TIME,
             {
                 x: (x) => STACK_CONFIG.RIGHT,
                 rotation: Math.PI * 2,
