@@ -4,6 +4,7 @@ import { GameStateStrategy } from "./GameState.Strategy";
 import { GAMESTATES } from "./GAME.STATES"
 import { StackSceneBlueprint } from "./StackScene/StackScene.Blueprint";
 import { GallerySceneBlueprint } from "./GalleryScene/Gallery.Blueprint";
+import { ParticlesSceneBlueprint } from "./ParticlesScene/Particles.Blueprint";
 // tslint:disable-next-line:variable-name
 export const GameBlueprint = {
   name: "Game",
@@ -19,6 +20,7 @@ export const GameBlueprint = {
   ],
   sceneMap: {
     [GAMESTATES.STACKSCENE]: StackSceneBlueprint,
-    [GAMESTATES.GALLERYSCENE]: GallerySceneBlueprint
+    [GAMESTATES.GALLERYSCENE]: GallerySceneBlueprint,
+    [GAMESTATES.PARTICLESSCENE]: ParticlesSceneBlueprint,
   }
 };
