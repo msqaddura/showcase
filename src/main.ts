@@ -21,5 +21,8 @@ const manifest = {
 System.getInstance().inject(manifest);
 
 window.onload = () => {
-  window["myWorld"] = BlueprintBuilder.getInstance().createObject(null, GameBlueprint);
+  window["myWorld"] = BlueprintBuilder.getInstance().createObject(
+    null,
+    GameBlueprint
+  );
 };

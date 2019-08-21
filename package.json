@@ -14,7 +14,10 @@
     "client:prod": "webpack --config config/webpack.config.prod.js --progress",
     "client:github": "webpack --config config/webpack.config.github.js --progress",
     "serve:dev": "webpack-dev-server --config config/webpack.config.dev.js",
-    "serve:staging": "webpack-dev-server --config config/webpack.config.staging.js"
+    "serve:staging": "webpack-dev-server --config config/webpack.config.staging.js",
+    "prettier:check": "prettier --list-different src/**/*.ts",
+    "prettier:write": "prettier --write src/**/*.ts",
+    "tslint:check": "tslint --fix tslint.json"
   },
   "author": "Mohamad Qaddura",
   "license": "UNLICENSED",
@@ -22,8 +25,11 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
+    "prettier": "^1.18.2",
     "ts-loader": "^6.0.4",
     "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.39.1",

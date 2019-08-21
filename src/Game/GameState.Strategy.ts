@@ -12,7 +12,7 @@ export class GameStateStrategy extends Strategy {
     console.info("** Loading Started! **");
     System.resource.preload("Resources/resources.json").subscribe({
       next: value => {
-        console.log(`Loaded :${Math.round(value)}%`)
+        console.log(`Loaded :${Math.round(value)}%`);
       },
       complete: () => {
         console.info("** Loading Finished! **");
@@ -20,11 +20,15 @@ export class GameStateStrategy extends Strategy {
         this.owner.create();
         sceneManager.loadScene(GAMESTATES.DEFAULT);
 
-        document.getElementById("STACKSCENE").onclick = () => { sceneManager.switchScenesTo("STACKSCENE") }
-        document.getElementById("GALLERYSCENE").onclick = () => { sceneManager.switchScenesTo("GALLERYSCENE") }
-        document.getElementById("PARTICLESSCENE").onclick = () => { sceneManager.switchScenesTo("PARTICLESSCENE") }
-
-
+        document.getElementById("STACKSCENE").onclick = () => {
+          sceneManager.switchScenesTo("STACKSCENE");
+        };
+        document.getElementById("GALLERYSCENE").onclick = () => {
+          sceneManager.switchScenesTo("GALLERYSCENE");
+        };
+        document.getElementById("PARTICLESSCENE").onclick = () => {
+          sceneManager.switchScenesTo("PARTICLESSCENE");
+        };
       }
     });
   }
