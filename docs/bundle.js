@@ -63,7 +63,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "8f7b0cbdea785c0dcb72";
+/******/ 	var hotCurrentHash = "b46d8cac08c7d00bbd18";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -21993,16 +21993,13 @@ exports.GALLERY_CONFIG = {
     TOTAL: 10,
     SLIDE_SIZE: 3,
     INTERVAL: 2000,
-    IMAGES: ["Resources/green_goblin.jpg",
+    IMAGES: [
+        "Resources/green_goblin.jpg",
         "Resources/iron_man.jpg",
         "Resources/team.png",
-        "Resources/vision.png"],
-    TEXTS: [
-        "marvel",
-        "heros",
-        "pixi",
-        "msqaddura"
-    ]
+        "Resources/vision.png"
+    ],
+    TEXTS: ["marvel", "heros", "pixi", "msqaddura"]
 };
 
 
@@ -22028,8 +22025,23 @@ exports.GallerySceneBlueprint = {
     layout: { name: "Portrait" },
     scaleOnly: true,
     blueprints: [
-        { ctor: webgladiator_1.Graphics, name: "diag_start", left: 0, top: 0, PivotX: 1, PivotY: 1 },
-        { ctor: webgladiator_1.Graphics, name: "diag_end", left: 512, top: 1024, PivotX: 1, PivotY: 1 },
+        {
+            ctor: webgladiator_1.Graphics,
+            name: "diag_start",
+            left: 0,
+            top: 0,
+            PivotX: 1,
+            PivotY: 1
+        },
+        {
+            ctor: webgladiator_1.Graphics,
+            name: "diag_end",
+            left: 512,
+            top: 1024,
+            PivotX: 1,
+            PivotY: 1
+        }
+        // { ctor: Sprite, name: "background", fromImage: "Resources/background.jpeg" },
     ]
 };
 
@@ -22089,23 +22101,26 @@ var GalleryScene = /** @class */ (function (_super) {
         for (var i = 0; i < GALLERY_Config_1.GALLERY_CONFIG.TOTAL; i++) {
             var blueprints = [];
             for (var j = 0; j < GALLERY_Config_1.GALLERY_CONFIG.SLIDE_SIZE; j++) {
-                var textOrImage = Math.random() < 0.5 ?
-                    {
+                var textOrImage = Math.random() < 0.5
+                    ? {
                         ctor: webgladiator_1.Sprite,
                         fromImage: snitch(GALLERY_Config_1.GALLERY_CONFIG.IMAGES)
-                    } : {
-                    ctor: webgladiator_2.Text,
-                    text: snitch(GALLERY_Config_1.GALLERY_CONFIG.TEXTS),
-                    options: {
-                        fontSize: Math.random() * 20 + 20,
-                        fill: 0x0000FF
                     }
-                };
+                    : {
+                        ctor: webgladiator_2.Text,
+                        text: snitch(GALLERY_Config_1.GALLERY_CONFIG.TEXTS),
+                        options: {
+                            fontSize: Math.random() * 20 + 20,
+                            fill: 0x0000ff
+                        }
+                    };
                 blueprints.push(__assign({}, textOrImage, { y: 256 + 256 * j, name: "item_" + j, anchorX: 0.5, anchorY: 0.5, x: 256 }));
             }
             slides.push({ ctor: webgladiator_2.Entity, blueprints: blueprints, name: "slide" });
         }
-        rxjs_1.timer(0, GALLERY_Config_1.GALLERY_CONFIG.INTERVAL).pipe(operators_1.takeWhile(function () { return _this.isAlive; })).subscribe(function (value) {
+        rxjs_1.timer(0, GALLERY_Config_1.GALLERY_CONFIG.INTERVAL)
+            .pipe(operators_1.takeWhile(function () { return _this.isAlive; }))
+            .subscribe(function (value) {
             if (_this.getNode("slide")) {
                 _this.removeNode("slide");
             }
@@ -22152,7 +22167,7 @@ exports.GameBlueprint = {
         {
             name: "GameStateStrategy",
             ctor: GameState_Strategy_1.GameStateStrategy
-        },
+        }
     ],
     sceneMap: (_a = {},
         _a[GAME_STATES_1.GAMESTATES.STACKSCENE] = StackScene_Blueprint_1.StackSceneBlueprint,
@@ -22256,11 +22271,18 @@ var GameStateStrategy = /** @class */ (function (_super) {
             },
             complete: function () {
                 console.info("** Loading Finished! **");
+                document.body.className = "loaded";
                 _this.owner.create();
                 webgladiator_2.sceneManager.loadScene(GAME_STATES_1.GAMESTATES.DEFAULT);
-                document.getElementById("STACKSCENE").onclick = function () { webgladiator_2.sceneManager.switchScenesTo("STACKSCENE"); };
-                document.getElementById("GALLERYSCENE").onclick = function () { webgladiator_2.sceneManager.switchScenesTo("GALLERYSCENE"); };
-                document.getElementById("PARTICLESSCENE").onclick = function () { webgladiator_2.sceneManager.switchScenesTo("PARTICLESSCENE"); };
+                document.getElementById("STACKSCENE").onclick = function () {
+                    webgladiator_2.sceneManager.switchScenesTo("STACKSCENE");
+                };
+                document.getElementById("GALLERYSCENE").onclick = function () {
+                    webgladiator_2.sceneManager.switchScenesTo("GALLERYSCENE");
+                };
+                document.getElementById("PARTICLESSCENE").onclick = function () {
+                    webgladiator_2.sceneManager.switchScenesTo("PARTICLESSCENE");
+                };
             }
         });
     };
@@ -22291,7 +22313,9 @@ exports.ParticlesSceneBlueprint = {
     layout: { name: "Game" },
     scaleOnly: false,
     blueprints: [
-        { ctor: webgladiator_1.Entity, name: "particle" },
+        { ctor: webgladiator_1.Entity, name: "particle" }
+        // { ctor: Graphics, name: "diag_end", left: 512, top: 1024, PivotX: 1, PivotY: 1 },
+        // { ctor: Sprite, name: "background", fromImage: "Resources/background.jpeg" },
     ]
 };
 
@@ -22309,56 +22333,56 @@ exports.ParticlesSceneBlueprint = {
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PARTICLES_CONFIG = {
-    "alpha": {
-        "start": 0.62,
-        "end": 0
+    alpha: {
+        start: 0.62,
+        end: 0
     },
-    "scale": {
-        "start": 0.25,
-        "end": 0.75,
-        "minimumScaleMultiplier": 1
+    scale: {
+        start: 0.25,
+        end: 0.75,
+        minimumScaleMultiplier: 1
     },
-    "color": {
-        "start": "#fff191",
-        "end": "#ff622c"
+    color: {
+        start: "#fff191",
+        end: "#ff622c"
     },
-    "speed": {
-        "start": 500,
-        "end": 500,
-        "minimumSpeedMultiplier": 1
+    speed: {
+        start: 500,
+        end: 500,
+        minimumSpeedMultiplier: 1
     },
-    "acceleration": {
-        "x": 0,
-        "y": 0
+    acceleration: {
+        x: 0,
+        y: 0
     },
-    "maxSpeed": 0,
-    "startRotation": {
-        "min": 265,
-        "max": 275
+    maxSpeed: 0,
+    startRotation: {
+        min: 265,
+        max: 275
     },
-    "noRotation": false,
-    "rotationSpeed": {
-        "min": 50,
-        "max": 50
+    noRotation: false,
+    rotationSpeed: {
+        min: 50,
+        max: 50
     },
-    "lifetime": {
-        "min": 0.1,
-        "max": 0.75
+    lifetime: {
+        min: 0.1,
+        max: 0.75
     },
-    "blendMode": "normal",
-    "frequency": 0.001,
-    "emitterLifetime": -1,
-    "maxParticles": 10,
-    "pos": {
-        "x": 0,
-        "y": 0
+    blendMode: "normal",
+    frequency: 0.001,
+    emitterLifetime: -1,
+    maxParticles: 10,
+    pos: {
+        x: 0,
+        y: 0
     },
-    "addAtBack": false,
-    "spawnType": "circle",
-    "spawnCircle": {
-        "x": 0,
-        "y": 0,
-        "r": 10
+    addAtBack: false,
+    spawnType: "circle",
+    spawnCircle: {
+        x: 0,
+        y: 0,
+        r: 10
     }
 };
 
@@ -22407,8 +22431,9 @@ var ParticlesScene = /** @class */ (function (_super) {
         webgladiator_2.particlesSystem.emit(this.particleContainer, ["Resources/particle.png", "Resources/fire.png"], Particles_Config_1.PARTICLES_CONFIG);
         this.particleContainer.x = window.innerWidth / 2;
         this.particleContainer.y = window.innerHeight / 2;
-        rxjs_1.fromEvent(window, "pointermove").pipe(operators_1.takeWhile(function () { return _this.isAlive; })).subscribe(function (e) {
-            console.log(e);
+        rxjs_1.fromEvent(window, "pointermove")
+            .pipe(operators_1.takeWhile(function () { return _this.isAlive; }))
+            .subscribe(function (e) {
             _this.particleContainer.x = e.clientX;
             _this.particleContainer.y = e.clientY;
         });
@@ -22485,18 +22510,20 @@ var StackScene = /** @class */ (function (_super) {
             tiles.push(this.getNode("item_" + i));
         }
         var zOrder = -Stack_Config_1.STACK_CONFIG.TOTAL;
-        this.tween = webgladiator_1.TweenSystem.getInstance().create({ paused: true }).staggerTo(tiles.reverse(), Stack_Config_1.STACK_CONFIG.ANIMATION_TIME, {
+        this.tween = webgladiator_1.TweenSystem.getInstance()
+            .create({ paused: true })
+            .staggerTo(tiles.reverse(), Stack_Config_1.STACK_CONFIG.ANIMATION_TIME, {
             x: function (x) { return Stack_Config_1.STACK_CONFIG.RIGHT; },
             rotation: Math.PI * 2,
             onComplete: function () {
-                console.log(this);
                 this.target.zIndex = zOrder++;
             },
             cycle: {
                 y: function (index) { return Stack_Config_1.STACK_CONFIG.BOTTOM - Stack_Config_1.STACK_CONFIG.OFFSET * index; },
                 zIndex: function (index) { return index; }
             }
-        }, Stack_Config_1.STACK_CONFIG.STAGGER, Stack_Config_1.STACK_CONFIG.DELAY).play();
+        }, Stack_Config_1.STACK_CONFIG.STAGGER, Stack_Config_1.STACK_CONFIG.DELAY)
+            .play();
     };
     StackScene.prototype.kill = function () {
         this.tween.kill();
@@ -22541,10 +22568,29 @@ exports.StackSceneBlueprint = {
     layout: { name: "Scene" },
     scaleOnly: true,
     blueprints: [
-        { ctor: webgladiator_1.Graphics, name: "diag_start", left: 0, top: 0, PivotX: 1, PivotY: 1 },
-        { ctor: webgladiator_1.Graphics, name: "diag_end", left: 500, top: 500, PivotX: 1, PivotY: 1 },
+        {
+            ctor: webgladiator_1.Graphics,
+            name: "diag_start",
+            left: 0,
+            top: 0,
+            PivotX: 1,
+            PivotY: 1
+        },
+        {
+            ctor: webgladiator_1.Graphics,
+            name: "diag_end",
+            left: 500,
+            top: 500,
+            PivotX: 1,
+            PivotY: 1
+        },
         // { ctor: Sprite, name: "background", fromImage: "Resources/background.jpeg" },
-        webgladiator_1.BlueprintUtil.repeat(Stack_Config_1.STACK_CONFIG.TOTAL, { ctor: webgladiator_1.Sprite, fromImage: "Resources/tile.png", anchorX: 0.5, anchorY: 0.5 }, function (item, index) { return (__assign({}, item, { name: "item_" + index, x: Stack_Config_1.STACK_CONFIG.LEFT, y: Stack_Config_1.STACK_CONFIG.BOTTOM - index * Stack_Config_1.STACK_CONFIG.OFFSET, tint: Math.random() * 0xFFFFFF, zIndex: index })); })
+        webgladiator_1.BlueprintUtil.repeat(Stack_Config_1.STACK_CONFIG.TOTAL, {
+            ctor: webgladiator_1.Sprite,
+            fromImage: "Resources/tile.png",
+            anchorX: 0.5,
+            anchorY: 0.5
+        }, function (item, index) { return (__assign({}, item, { name: "item_" + index, x: Stack_Config_1.STACK_CONFIG.LEFT, y: Stack_Config_1.STACK_CONFIG.BOTTOM - index * Stack_Config_1.STACK_CONFIG.OFFSET, tint: Math.random() * 0xffffff, zIndex: index })); })
     ]
 };
 
@@ -100544,9 +100590,7 @@ exports.STATUS = NetSystem_1.STATUS;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var PIXI = __webpack_require__(/*! pixi.js */ "./submodules/WebGLadiator/node_modules/pixi.js/lib/pixi.es.js");
 var PARTICLES = __webpack_require__(/*! pixi-particles */ "./submodules/WebGLadiator/node_modules/pixi-particles/lib/pixi-particles.es.js");
-console.log(PARTICLES);
 var ParticleSystem = /** @class */ (function () {
     function ParticleSystem() {
     }

@@ -5,10 +5,33 @@
   <meta charset="UTF-8" />
   <title>Show Case!</title>
   <style>
-    ul {
+    body {
+      background-color: black;
+      background-image: url(loader.gif);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 50%;
+    }
+
+    body.loaded {
+      background-image: none;
+    }
+
+    body.loaded>ul {
+      display: block;
       position: fixed;
       margin: 0;
       padding: 0;
+      right: 0;
+    }
+
+    ul {
+      display: none;
+
+    }
+
+    ul>li {
+      list-style: none;
     }
 
     *:not(.html) {
@@ -28,6 +51,10 @@
       /*take the content from the title*/
       color: white;
     }
+
+    button.html {
+      width: 100%;
+    }
   </style>
 
   <meta name="viewport"
@@ -36,13 +63,17 @@
 
 <body>
   <ul class="html" id="menu">
-    <li><button class="html" id="STACKSCENE">Stacks</button>
+    <li class="html"><button class="html" id="STACKSCENE">Stacks</button>
     </li>
-    <li> <button class="html" id="GALLERYSCENE">Gallery</button>
+    <li class="html"> <button class="html" id="GALLERYSCENE">Gallery</button>
     </li>
-    <li> <button class="html" id="PARTICLESSCENE">Particles</button></li>
+    <li class="html"> <button class="html" id="PARTICLESSCENE">Particles</button></li>
   </ul>
   <script src="bundle.js"></script>
+  <script>
+    (function () { var script = document.createElement('script'); script.onload = function () { var stats = new Stats(); stats.dom.id = "stats"; document.body.appendChild(stats.dom); requestAnimationFrame(function loop() { stats.update(); requestAnimationFrame(loop) }); }; script.src = '//mrdoob.github.io/stats.js/build/stats.min.js'; document.head.appendChild(script); })()
+  </script>
+
 </body>
 
 </html>
