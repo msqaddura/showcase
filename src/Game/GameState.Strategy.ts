@@ -16,6 +16,7 @@ export class GameStateStrategy extends Strategy {
       },
       complete: () => {
         console.info("** Loading Finished! **");
+        document.body.className = "loaded";
         this.owner.create();
         sceneManager.loadScene(GAMESTATES.DEFAULT);
 

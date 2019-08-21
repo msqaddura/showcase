@@ -17,7 +17,7 @@ export class StackScene extends Scene {
                 x: (x) => STACK_CONFIG.RIGHT,
                 rotation: Math.PI * 2,
                 onComplete: function () {
-                    console.log(this)
+
                     this.target.zIndex = zOrder++;
                 },
 

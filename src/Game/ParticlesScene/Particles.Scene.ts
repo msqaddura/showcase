@@ -19,7 +19,7 @@ export class ParticlesScene extends Scene {
         this.particleContainer.x = window.innerWidth / 2;
         this.particleContainer.y = window.innerHeight / 2;
         fromEvent(window, "pointermove").pipe(takeWhile(() => this.isAlive)).subscribe((e: PointerEvent) => {
-            console.log(e)
+
             this.particleContainer.x = e.clientX;
             this.particleContainer.y = e.clientY;
         })
